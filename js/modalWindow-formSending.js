@@ -66,7 +66,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-
             let statusMessage = document.createElement('img');
             statusMessage.src = message.loading;
             statusMessage.style.cssText = `
@@ -75,28 +74,30 @@ window.addEventListener('DOMContentLoaded', () => {
             `;
             form.insertAdjacentElement('afterend', statusMessage);
 
-            const request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
-            request.setRequestHeader('Content-type', 'application/json');
-
             const formData = new FormData(form);
-
             const formDataJSON = {};
             formData.forEach((value, key) => {
                 formDataJSON[key] = value;
             })
-            request.send(JSON.stringify(formDataJSON));
 
-            request.addEventListener('load', () => {
-                if (request.status === 200) {
-                    console.log(request.response);
+            fetch('server.php', {
+                method:  'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body:    JSON.stringify(formDataJSON)
+            }).then(data => data.text())
+                .then(data => {
+                    console.log(data);
                     showThanksModal(message.success);
                     statusMessage.remove();
-                    form.reset();
-                } else {
+                })
+                .catch(() => {
                     showThanksModal(message.failure);
-                }
-            });
+                })
+                .finally(() => {
+                    form.reset();
+                })
         });
     }
 
@@ -123,8 +124,5 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 4000)
     }
 
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(response => response.json())
-        .then(json => console.log(json))
 });
 

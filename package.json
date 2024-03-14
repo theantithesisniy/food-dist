@@ -1,0 +1,18 @@
+{
+  "name": "food-dist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theantithesisniy/food-dist.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theantithesisniy/food-dist/issues"
+  },
+  "homepage": "https://github.com/theantithesisniy/food-dist#readme"
+}
