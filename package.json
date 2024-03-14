@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theantithesisniy/food-dist.git"
@@ -14,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/theantithesisniy/food-dist/issues"
   },
-  "homepage": "https://github.com/theantithesisniy/food-dist#readme"
+  "homepage": "https://github.com/theantithesisniy/food-dist#readme",
+  "devDependencies": {
+    "json-server": "^1.0.0-alpha.23"
+  }
 }
